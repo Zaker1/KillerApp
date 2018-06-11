@@ -1,0 +1,44 @@
+﻿@model Twooter.ViewModels.BanViewModel
+
+@{
+    ViewData["Title"] = "Ban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ban</h2>
+@using (Html.BeginForm())
+{
+<div>
+    @foreach (var value in TempData.Values)
+    {
+        <p class="alert alert-danger">@value</p>
+    }
+    <h4>Profiel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Profiel.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Profiel.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Profiel.Gebruikersnaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Profiel.Gebruikersnaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Profiel.Beschrijving)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Profiel.Beschrijving)
+        </dd>
+        @Html.HiddenFor(m => m.Profiel.ID)
+    </dl>
+</div>
+<div>
+    <button asp-controller="Admin" asp-action="Ban" type="submit">Ban</button> |
+    <a asp-action="Index">Back to List</a>
+</div>
+}

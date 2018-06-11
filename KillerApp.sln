@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Twooter", "Twooter\Twooter.csproj", "{1831D0C3-61F4-43A3-8ED4-5BB88F8F2341}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestTwooter", "UnitTestTwooter\UnitTestTwooter.csproj", "{BE8610F7-15AE-43AC-9DBB-6118E3466873}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1831D0C3-61F4-43A3-8ED4-5BB88F8F2341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1831D0C3-61F4-43A3-8ED4-5BB88F8F2341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1831D0C3-61F4-43A3-8ED4-5BB88F8F2341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1831D0C3-61F4-43A3-8ED4-5BB88F8F2341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE8610F7-15AE-43AC-9DBB-6118E3466873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE8610F7-15AE-43AC-9DBB-6118E3466873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE8610F7-15AE-43AC-9DBB-6118E3466873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE8610F7-15AE-43AC-9DBB-6118E3466873}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F11FE577-C3D4-49AB-92CD-BFF7E6DF0278}
+	EndGlobalSection
+EndGlobal

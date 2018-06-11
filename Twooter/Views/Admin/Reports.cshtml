@@ -1,0 +1,27 @@
+﻿@model Twooter.ViewModels.ReportViewModel
+@{
+    ViewData["Title"] = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="width: 1337px; margin-left: auto; margin-right: auto;">Reports van @Model.Reported.Gebruikersnaam</h2>
+<table class="table" style="width: 1337px; margin-left: auto; margin-right:auto;">
+    
+    <thead>
+        <tr>
+            <th>Naam</th>
+            <th>Beschrijving</th>
+            <th>Datum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Reported.Reports)
+        {
+            <tr>
+                <td>@item.ReporterNaam</td>
+                <td>@item.Bericht</td>
+                <td>@item.Tijd</td>
+            </tr>
+        }
+    </tbody>
+</table>

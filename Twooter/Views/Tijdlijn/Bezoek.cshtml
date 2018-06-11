@@ -1,0 +1,114 @@
+﻿@model Twooter.ViewModels.GetTijdlijn;
+@using Twooter.ViewModels;
+@{
+    ViewData["Title"] = "Tijdlijn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.title = "Index";
+
+    string imgSrc = String.Empty;
+    if (Model.Tijdlijn.Profiel.Foto != null)
+    {
+        var base64 = Convert.ToBase64String(Model.Tijdlijn.Profiel.Foto);
+        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    }
+}
+
+@using (Html.BeginForm())
+{
+    <head>
+
+    </head>
+    <body>
+        <div class="container" style="float:left; width: 25%; height:500px; margin-top: 25px; margin-left: 50px;">
+            <div class="row">
+                <div class="span4 well">
+                    <div class="row">
+                        <div class="span1">
+                            @if (imgSrc == String.Empty)
+                            {
+                                <img src="~/images/Foto/standaard.png" style="height:auto; width:450px; display:block; margin-left:auto; margin-right:auto; max-width:308.25px" />
+                            }
+                            else
+                            {
+                                <img src="@imgSrc" style="height:auto; width:450px; display:block; margin-left:auto; margin-right:auto; max-width:308.25px" />
+                            }
+                        </div>
+                        <div class="span3">
+                            <p><strong>@Model.Tijdlijn.Profiel.Gebruikersnaam</strong></p>
+                            <span class=" badge badge-warning">@String.Format("{0} twoots", Model.Tijdlijn.Twoots.Count)</span> <span class=" badge badge-info">@String.Format("{0} volgend", Model.Tijdlijn.Vrienden.Count)</span>
+                            @Html.ActionLink("Report", "Rapporteren", "Profiel", new { id=Model.Tijdlijn.Profiel.ID}, null)
+                            @if (Model.Volgend)
+                            {
+                            <img id="@Model.Tijdlijn.Profiel.ID" onclick="volg(this)" src="~/images/Foto/VolHart.png" style="max-height: 25px; max-width:25px" />
+                            }
+                            else
+                            {
+                            <img id="@Model.Tijdlijn.Profiel.ID" onclick="volg(this)" src="~/images/Foto/LeegHart.png" style="max-height: 25px; max-width:25px" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; width: 500px; height:auto; min-height: 500px; flex-direction: column; margin-left: auto; float: right; margin-top: 25px;">
+            @foreach (Profiel profiel in Model.Tijdlijn.Vrienden)
+            {
+                string foto = String.Empty;
+                if (profiel.Foto != null)
+                {
+                    string basis = Convert.ToBase64String(profiel.Foto);
+                    foto = String.Format("data:image/gif;base64,{0}", basis);
+                }
+
+                <div class="span4 well" id="Vriend">
+                    <div>
+                        @if (foto == String.Empty)
+                        {
+                            <img src="~/images/Foto/standaard.png" style="height:45px; width:50px; float: left;" />
+                        }
+                        else
+                        {
+                            <img src="@foto" style="height:45px; width:50px; float:left;" />
+
+                        }
+
+                    </div>
+                    <div class="span3">
+                        <a href="/Tijdlijn/Bezoek/@profiel.ID" style="text-decoration: none;">
+                            <p style="padding:15px 0 0 10px; margin-left: 50px;">@profiel.Gebruikersnaam</p>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="tijdlijn" style="display: flex; width: 500px; height:auto; min-height:1500px; margin: 0 auto; flex-direction: column; padding-left: 12px; margin-top: 25px;">
+            @foreach (Twoot twoot in Model.Tijdlijn.Twoots)
+            {
+                <div id="Post" class="@twoot.HtmlKlasse twoot" style="width: 100%; height: 200px; margin-top:25px; margin-bottom:25px;">
+                    <div id="Twootnaam" style="width:100%; height:50px;">
+                        <p style="padding: 15px 0 0 10px;">@twoot.naamPoster</p>
+                    </div>
+                    <div id="bericht">
+                        <p style="padding: 15px 0 30px 10px">@twoot.Bericht</p>
+                    </div>
+                    <div id="datum">
+                        <p style="padding: 15px 0 0 10px;">@twoot.date</p>
+                    </div>
+                    <input name="ID" value="@twoot.ID" type="hidden" />
+                    <div class="PostInteractie">
+                        @if (twoot.Favoriet)
+                        {
+                            <img id="@twoot.ID" onclick="favorite(this)" src="~/images/Foto/VolSter.png" name="ster" style="max-height: 25px; max-width:25px" />
+                        }
+                        else
+                        {
+                            <img id="@twoot.ID" onclick="favorite(this)" src="~/images/Foto/LeegSter.png" name="ster" style="max-height: 25px; max-width:25px" />
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        <script src="~/js/Scripting.js"></script>
+    </body>
+}
+

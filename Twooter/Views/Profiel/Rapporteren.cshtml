@@ -1,0 +1,16 @@
+﻿@model Twooter.ViewModels.ReportViewModel
+@{
+    ViewData["Title"] = "Rapporteren";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div style="width: 600px; max-width: 600px; margin-right: auto; margin-left:auto;" >
+    <h2>@String.Format("Je gaat nu {0} rapporteren, vul hieronder de reden in", Model.Reported.Gebruikersnaam)</h2>
+    @Html.HiddenFor(m => m.Reported.ID)
+    @Html.TextAreaFor(m => m.Bericht, new { @class = "form-control" })
+    <input type="submit" value="Report" class="btn btn-primary"/>
+    </div>
+}
+

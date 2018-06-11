@@ -1,0 +1,28 @@
+﻿@model Twooter.ViewModels.ReportListViewModel
+@{
+    ViewData["Title"] = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reports</h2>
+<table class="table" style="width: 1337px; margin-left: auto; margin-right:auto;">
+    <thead>
+        <tr>
+            <th>Naam</th>
+            <th>Beschrijving</th>
+            <th>Aantal reports</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ReportedProfielen) {
+        <tr>
+            <td>@item.Gebruikersnaam</td>
+            <td>@item.Beschrijving</td>
+            <td>@item.AantalReports</td>
+            <td>@Html.ActionLink("Bekijk reports", "Reports", "Admin", new { id=item.ID }) |
+            @Html.ActionLink("Ban", "Ban", "Admin", new { id=item.ID })</td>
+        </tr>
+}
+    </tbody>
+</table>
+@Html.ActionLink("Banned accounts", "BannedOverzicht", "Admin")

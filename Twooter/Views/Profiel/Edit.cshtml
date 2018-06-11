@@ -1,0 +1,30 @@
+﻿@model Twooter.ViewModels.EditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Profiel</h4>
+<hr />
+
+<form asp-action="Edit">
+    <div class="row">
+        <div class="col-md-4">
+            @Html.HiddenFor(m => m.huidigeProfiel.ID)
+            <div>
+                Gebruikersnaam: @Html.TextBoxFor(m => m.nieuweGebruikersnaam, new { @class = "form-control" }) <br />
+                Beschrijving: @Html.TextBoxFor(m => m.nieuweBeschrijving, new { @class = "form-control" }) <br />
+                Foto: @Html.EditorFor(m => m.nieuweFoto, new { @class = "form-control" })
+                <input type="submit" class="btn btn-primary" value="Save"/>
+            </div>
+
+        </div>
+    </div>
+</form>
+<div>
+    <a asp-controller="Tijdlijn" asp-action="Index">Back to Timeline</a>
+</div>
+

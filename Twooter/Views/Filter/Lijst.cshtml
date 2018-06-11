@@ -1,0 +1,29 @@
+﻿@model Twooter.ViewModels.FilterViewModel
+<div class="container justify-content-center" style="margin-top: 25px;">
+    <form asp-controller="Filter" asp-action="Index" method="POST" style="float: left;">
+        @if (TempData["DatabaseFout"] != null)
+        {
+            <p class="alert-danger">@TempData["DatabaseFout"]</p>
+        }
+        <div style="width: 500px;">
+
+            <div class="row">
+                <div class="col-lg-3">
+                    @Html.TextBoxFor(m => m.FilterWoordAdd, new { @class = "form-control", @style = "float: left; width: 450px; display: inline;" })
+                    <input type="submit" value="Voeg toe" class="btn btn-success" />
+                </div>
+            </div>
+
+            @Html.ListBoxFor(m => m.FilterId, new SelectList(Model.Filter, "Id", "Woord"), new { @class = "form-control", style="min-height: 300px; margin-top: 25px;"})
+        </div>
+
+        <script src="~/js/Scripting.js"></script>
+    </form>
+    <form asp-controller="Filter" asp-action="Verwijder" method="post" style="float: right;">
+
+        <div class="col-lg-3">
+            @Html.TextBoxFor(m => m.FilterWoordDelete, new { @class = "form-control", @style = "float: left; width: 450px; display: inline;" })
+            <input type="submit" value="Verwijder" class="btn btn-danger" />
+        </div>
+    </form>
+</div>

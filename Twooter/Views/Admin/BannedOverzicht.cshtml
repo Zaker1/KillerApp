@@ -1,0 +1,29 @@
+﻿@model Twooter.ViewModels.BannedOverzichtViewModel
+@{
+    ViewData["Title"] = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Banned profielen</h2>
+<table class="table" style="width: 800px; margin-left: auto; margin-right:auto;">
+    <thead>
+        <tr>
+            <th>Naam</th>
+            <th>Beschrijving</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BannedProfielen)
+        {
+            <tr>
+                <td>@item.Gebruikersnaam</td>
+                <td>@item.Beschrijving</td>
+                <td>
+                    @Html.ActionLink("Bekijk reports", "Reports", "Admin", new { id = item.ID }) |
+                @Html.ActionLink("Unban", "UnBan", "Admin", new { id = item.ID })
+                </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

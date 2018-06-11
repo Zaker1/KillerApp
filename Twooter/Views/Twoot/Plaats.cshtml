@@ -1,0 +1,18 @@
+﻿@model Twooter.ViewModels.PlaatsTwoot
+<div class="container" style="width: 500px; height: 250px; margin-top: 25px;">
+    <div class="row">
+        @*<form asp-controller="Twoot" role="search">*@
+        <div class="span4 well" style="padding-bottom:0; width: 425px; height: 200px;">
+            @foreach (var value in TempData.Values)
+            {
+                <p class="alert alert-danger">@value</p>
+            }
+            @Html.TextAreaFor(m => Model.bericht, new { id = "tekstgebied", placeholder = "Type in your twoot", rows = "5", style = "width:100%; min-height: 125px; max-height: 125px;" })
+            <input type="hidden" name="ProfielID" value="@Model.profielID" />
+            <input disabled maxlength="3" size="3" value="256" id="counter" style="float:left;">
+            <button asp-controller="Twoot" asp-action="Plaats" type="submit" class="btn btn-info" style="float: left;">Post your message</button>
+        </div>
+        @*</form>*@
+    </div>
+</div>
+

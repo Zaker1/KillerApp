@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="links" style="width: 50%; height:1000px; float: left;">
+    <div style="max-height: 300px; max-width: 300px; margin: 250px auto;">
+        <h2 style="text-align:center;">Voeg filters toe</h2>
+        <a href="@Url.Action("Index", "Filter")">
+            <img src="~/images/Foto/filter.png" style="height: 300px; width: 300px;" />
+        </a>
+    </div>
+</div>
+<div id="rechts" style="width: 50%; height:1000px; float: right;">
+    <div style="max-height: 300px; max-width: 300px; margin: 250px auto">
+        <h2 style="text-align:center;">Bekijk reports</h2>
+        <a href="@Url.Action("ReportsOverzicht", "Admin")">
+            <img src="~/images/Foto/report.png" style="height: 300px; width: 300px;" />
+        </a>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="divLinks" style="float:left; height:100%; width:50%;">
+    <div id="divLogin" style="height:500px; width:500px; margin:auto;">
+        @Html.Partial("/Views/Account/Login.cshtml")
+    </div>
+</div>
+
+<div id="divRechts" style="float:right; height:100%; width:50%;">
+    <div id="divRechts" style="margin:auto; height:500px; max-width:500px;">
+        @Html.Partial("/Views/Account/Registreer.cshtml")
+    </div>
+</div>
+
+
